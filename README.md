@@ -17,7 +17,7 @@ Pregledala bova tudi kako hitro se povečuje število izdanih pesmi glede na vsa
 
 
 ## 2. Opis podatkov
-Za uporabo sva se odločila, da bova uporabila dataset iz spletne strani [Mendeley Data](https://data.mendeley.com/datasets/3t9vbwxgr5/2). V datasetu imamo shranjenih 28373 glasbe in vsaka od njih ima po 30 parametrov, kateri so spodaj našteti in imajo kratek opis. Ta dataset je biu ustvarjen z starejšimi odordji, ki v današnjih dneh nimajo več veliko podpore in niso popularni zato točnih opisov podatkov žal nisva mogla dobiti, npr. "age". Narejen je bil s pomočjo Echo Nest API-ja in pa spotipy, ki je paket za python, kateri se uporablja za pridobivanje glasenih podatkov preko [Spotify-a](https://spotipy.readthedocs.io/).
+Za uporabo sva se odločila, da bova uporabila dataset iz spletne strani [Mendeley Data](https://data.mendeley.com/datasets/3t9vbwxgr5/3). V datasetu imamo shranjenih 28373 glasbe in vsaka od njih ima po 30 parametrov, kateri so spodaj našteti in imajo kratek opis. Ta dataset je biu ustvarjen z starejšimi odordji, ki v današnjih dneh nimajo več veliko podpore in niso popularni zato točnih opisov podatkov žal nisva mogla dobiti, npr. "age". Narejen je bil s pomočjo Echo Nest API-ja in pa spotipy, ki je paket za python, kateri se uporablja za pridobivanje glasenih podatkov preko [Spotify-a](https://spotipy.readthedocs.io/).
 
 Podatki: 
  * id - identifikacijska številka skladbe
