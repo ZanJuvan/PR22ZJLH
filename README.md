@@ -55,17 +55,28 @@ Podatki:
 
 ## 3. Glavne ugotovitve
 1. hipoteza
+
 Še ni poterjena saj še vedno delava na modelu. Imava že nek lahek priporočilni sistem, ampak še ni čisto izpopolnjen.
 
 2. hipoteza
+
 Je potrjena, saj se iz spodnjega grafa jasno vidi, da se povečuje dancability. Iz grafa se lepo vidi da se je od 2009 do 2019 dancability povečal za skoraj 0.1. V letu 2009 je bil povpreček 0.5499, v letu 2019 pa 0.6213. Če ne gledamo samo dveh let, smo vzeli obdobje med 1950 do 2009 in od 2010 do 2019. Smo dobili rezultate, da je povprečna dancability v zgodnjih letih bila 0.5244 in v poznih 0.5737, kar je skoraj kot 5% razlike.
-<img src="images/dancability.png" />
+
+<img src="images/dancability.png"  width="45%"/>
+
 3. hipoteza
+
 Tu naju je zelo presenetilo, saj sva se kar krepko zmotila. To je že na prvi pogled vidno iz grafa, da število žalostnih psemi umira. Do leta 2015 je bila povprečna žalostnost pesmi zmanjševala. Najbolj žalostne pesmi so bile izdane 1953. Do leta 2015 je bila povprečna žalostnost pesmi 0.2737, od vključno 2015 naprej pa 0.2238. Če pa gremo gledati samo pesmi, ki imajo kot temp nastavljeno "sadness" pa se malo spremni, potem je pred letom 2015 vrednost žalostnosti 0.4341, po in vključno z letom 2015 pa 0.4195. Razlika se je dosti zmanjšala kar pomeni, da so vseno 
-<img src="images/sadness.png" /> <img src="images/sad.png" />
+
+<img src="images/sadness.png"  width="45%"/> <img src="images/sad.png" width="45%" />
+
 4. hipoteza
 
-<img src="images/songsByYear.png" />
+Pred letom 2000 je bilo v povprečju na leto izdano 359.2 pesmi po vključno letu 2000 pa 520.6. Tu meniva, da je veliko pesmi, predvsem iz let pred 1965, katerih ni v datasetu in lahko da tudi to spremeni rahlo rezultat. Ampak ne misliva da bi prišlo do kakšne večje razlike, saj so leta po 2000 vseeno v zelo velikem vodstvu.
+
+<p><img src="images/songsByYear.png"  width="45%"/>
+
+
 Pred letom 2000 je bilo v povprečju manj izdanih pesmi kot po letu 2000.
 
 ## 4. Izvedene alaize
