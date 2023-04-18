@@ -62,103 +62,22 @@ Podatki:
 
 Je potrjena, saj se iz spodnjega grafa jasno vidi, da se povečuje dancability. Iz grafa se lepo vidi da se je od 2009 do 2019 dancability povečal za skoraj 0.1. V letu 2009 je bil povpreček 0.5499, v letu 2019 pa 0.6213. Če ne gledamo samo dveh let, smo vzeli obdobje med 1950 do 2009 in od 2010 do 2019. Smo dobili rezultate, da je povprečna dancability v zgodnjih letih bila 0.5244 in v poznih 0.5737, kar je skoraj kot 5% razlike.
 
-<img src="images/dancability.png"  width="45%"/>
+<img src="images/dancability.png"  width="49%"/>
 
 3. hipoteza
 
 Tu naju je zelo presenetilo, saj sva se kar krepko zmotila. To je že na prvi pogled vidno iz grafa, da število žalostnih psemi umira. Do leta 2015 je bila povprečna žalostnost pesmi zmanjševala. Najbolj žalostne pesmi so bile izdane 1953. Do leta 2015 je bila povprečna žalostnost pesmi 0.2737, od vključno 2015 naprej pa 0.2238. Če pa gremo gledati samo pesmi, ki imajo kot temp nastavljeno "sadness" pa se malo spremni, potem je pred letom 2015 vrednost žalostnosti 0.4341, po in vključno z letom 2015 pa 0.4195. Razlika se je dosti zmanjšala kar pomeni, da so vseno 
 
-<img src="images/sadness.png"  width="45%"/> <img src="images/sad.png" width="45%" />
+<img src="images/sadness.png"  width="49%"/> <img src="images/sad.png" width="49%" />
 
 4. hipoteza
 
 Pred letom 2000 je bilo v povprečju na leto izdano 359.2 pesmi po vključno letu 2000 pa 520.6. Tu meniva, da je veliko pesmi, predvsem iz let pred 1965, katerih ni v datasetu in lahko da tudi to spremeni rahlo rezultat. Ampak ne misliva da bi prišlo do kakšne večje razlike, saj so leta po 2000 vseeno v zelo velikem vodstvu.
 
-<p><img src="images/songsByYear.png"  width="45%"/>
+<img src="images/songsByYear.png"  width="49%"/>
 
 ## 4. Izvedene alaize
   
- Pri modelu za predlaganje pesmi uporabljava sledečo kodo:    
-```
-import pandas as pd
-from sklearn.linear_model import LinearRegression
-import random
-pesmi = pd.read_csv('tcc_ceds_music.csv')
+Pri modelu za predlaganje pesmi uporabljava kodo, ki se nahaja v dokumentu \emph{priporočilniSistem.py}. Model si po vsaki uporabnikovi oceni le to zabeleži, ter izmed 100 naključno izbranih pesmi izpiše tisto, za katero napovemo najvišjo oceno.    
 
-def predlagaj_pesem(pesmi_training):
-    predict_max = 0
-    pesem = pesmi.sample().iloc[0]
-    xp = np.array(pesem[['len', 'dating', 'violence', 'world/life', 'night/time',
-                            'shake the audience', 'family/gospel', 'romantic', 'communication', 'obscene',
-                            'music', 'movement/places', 'light/visual perceptions', 'family/spiritual',
-                            'like/girls', 'sadness', 'feelings', 'danceability', 'loudness', 'acousticness',
-                            'instrumentalness', 'valence', 'energy', 'age']])
-    pesem_max=pesem
-    i = 0
-    while (i < 100):
-        i += 1
-        x = pesmi_training[['len', 'dating', 'violence', 'world/life', 'night/time',
-                            'shake the audience', 'family/gospel', 'romantic', 'communication', 'obscene',
-                            'music', 'movement/places', 'light/visual perceptions', 'family/spiritual',
-                            'like/girls', 'sadness', 'feelings', 'danceability', 'loudness', 'acousticness',
-                            'instrumentalness', 'valence', 'energy', 'age']]
-        y = pesmi_training['ocena']
-        y = np.array(y).reshape(-1, 1)
-        x = np.array(x).reshape(-1,24)
-
-        lr = LinearRegression()
-        lr.fit(x, y)
-
-        pesem = pesmi.sample().iloc[0]
-
-        xp = np.array(pesem[['len', 'dating', 'violence', 'world/life', 'night/time',
-                              'shake the audience', 'family/gospel', 'romantic', 'communication', 'obscene',
-                              'music', 'movement/places', 'light/visual perceptions', 'family/spiritual',
-                              'like/girls', 'sadness', 'feelings', 'danceability', 'loudness', 'acousticness',
-                              'instrumentalness', 'valence', 'energy', 'age']])
-        predict = lr.predict(xp.reshape(1, -1))
-        if(predict_max<predict):
-            predict_max=predict
-            pesem_max=pesem
-    return pesem_max
-    
-
-pesem=pesmi.sample().iloc[0]
-print(pesem['artist_name'], "-", pesem['track_name'])
-ocena=input("Oceni pesem:")
-pesem["ocena"]=ocena
-pesmi_training=pd.DataFrame
-pesmi_training=pesem[["len","dating","violence","world/life","night/time",
-                       "shake the audience","family/gospel","romantic","communication","obscene",
-                       "music","movement/places","light/visual perceptions","family/spiritual",
-                       "like/girls","sadness","feelings","danceability","loudness","acousticness",
-                       "instrumentalness","valence","energy","age","ocena"]]
-i=0
-while(i<5):
-    i+=1
-    pesem=pesmi.sample().iloc[0]
-    print(pesem['artist_name'], "-", pesem['track_name'])    
-    ocena=input("Oceni pesem:")
-    pesem["ocena"]=ocena
-    pesmi_training=pesmi_training.append(pesem[["len","dating","violence","world/life","night/time",
-                                                 "shake the audience","family/gospel","romantic","communication","obscene",
-                                                 "music","movement/places","light/visual perceptions","family/spiritual",
-                                                 "like/girls","sadness","feelings","danceability","loudness","acousticness",
-                                                 "instrumentalness","valence","energy","age","ocena"]])
-i = 0
-while i < 500:
-    i += 1
-    pesem = predlagaj_pesem(pesmi_training)
-    print(pesem['artist_name'], "-", pesem['track_name'])
-    ocena = input("Oceni pesem:")
-    pesem["ocena"] = ocena  
-    pesmi_training=pesmi_training.append(pesem[["len","dating","violence","world/life","night/time",
-                                                 "shake the audience","family/gospel","romantic","communication","obscene",
-                                                 "music","movement/places","light/visual perceptions","family/spiritual",
-                                                 "like/girls","sadness","feelings","danceability","loudness","acousticness",
-                                                 "instrumentalness","valence","energy","age","ocena"]])
-  
-   
-```
-model si po vsaki uporabnikovi oceni le to zabeleži, ter izmed 100 naključno izbranih pesmi izpiše tisto, za katero napovemo najvišjo oceno.    
-
+Vsa ostala koda, ki se je uporabljala za dobivanje zgornjih rezultatov se nahaja v python notebooku \emph{mining.ipynb}
