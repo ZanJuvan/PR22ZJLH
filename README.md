@@ -53,7 +53,7 @@ Podatki:
  * age - razpon starosti izražen s številko
   
 
-## 3. Glavne ugotovitve
+## 3. Glavne ugotovitve in rezultati
 1. hipoteza
 
 Še ni poterjena saj še vedno delava na modelu. Imava že nek lahek priporočilni sistem, ampak še ni čisto izpopolnjen.
@@ -75,9 +75,6 @@ Tu naju je zelo presenetilo, saj sva se kar krepko zmotila. To je že na prvi po
 Pred letom 2000 je bilo v povprečju na leto izdano 359.2 pesmi po vključno letu 2000 pa 520.6. Tu meniva, da je veliko pesmi, predvsem iz let pred 1965, katerih ni v datasetu in lahko da tudi to spremeni rahlo rezultat. Ampak ne misliva da bi prišlo do kakšne večje razlike, saj so leta po 2000 vseeno v zelo velikem vodstvu.
 
 <p><img src="images/songsByYear.png"  width="45%"/>
-
-
-Pred letom 2000 je bilo v povprečju manj izdanih pesmi kot po letu 2000.
 
 ## 4. Izvedene alaize
   
@@ -165,4 +162,3 @@ while i < 500:
 ```
 model si po vsaki uporabnikovi oceni le to zabeleži, ter izmed 100 naključno izbranih pesmi izpiše tisto, za katero napovemo najvišjo oceno.    
 
-## 5. Glavni rezultati
