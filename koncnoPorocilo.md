@@ -56,7 +56,7 @@ Podatki:
 ## 3. Glavne ugotovitve in rezultati
 1. hipoteza
 
-Priporočilni sistem uporablja knjižnico Brain js, s katero ustvarimo nevronsko mrežo. Nahaja se v mapi recomender. Kot vhod modelu podamo že znane podatke o pesmih, kot rezultat pa uporabnikovo oceno te pesmi(če mu je bila všeč ali ne). Uporabniku najprej predlagamo 5 pesmi, potem pa zgradimo model, s katerim predlagamo pesem. Pesem predlagamo tako, d z modelom za vse pesmi napovemo rezultat in izberemo najboljšo. Modelu po vsaki pesmi ki jo uporabnik oceni, dodamo podatke o ti pesmi in njeno oceno ter s temi posodobljenimi podatki napovemo novo. Priporočilni sistem bi lahko naprimer uporabili za sprotno generiranje playliste, na podlagi pesmi ki jih je uporabnik že ocenil.
+Priporočilni sistem uporablja knjižnico Brain js, s katero ustvarimo nevronsko mrežo. Nahaja se v mapi recomender. Kot vhod modelu podamo že znane podatke o pesmih, kot rezultat pa uporabnikovo oceno te pesmi(če mu je bila všeč ali ne). Uporabniku najprej predlagamo 5 pesmi, potem pa zgradimo model, s katerim predlagamo pesem. Pesem predlagamo tako, d z modelom za vse pesmi napovemo rezultat in izberemo najboljšo. Modelu po vsaki pesmi ki jo uporabnik oceni, dodamo podatke o ti pesmi in njeno oceno ter s temi posodobljenimi podatki napovemo novo. Priporočilni sistem bi lahko naprimer uporabili za sprotno generiranje playliste, na podlagi pesmi ki jih je uporabnik že ocenil. Model so nama pomagali testirati prijatelji. Primerjala sva ga z naključnim izbiranjem pesmi, in izkazal se je za približno 10% boljšega pri izbiranju pesmi od naključnega modela.
 
 2. hipoteza
 
@@ -89,8 +89,8 @@ Tekom raziskovanja sva se odločila, da bova probala pregledati tudi vzpone in p
 
 <img src="images/ganers.png"  width="100%"/> 
 
-## 4. Izvedene alaize
+## 4. Izvedene anlaize
   
-Pri modelu za predlaganje pesmi uporabljava kodo, ki se nahaja v dokumentu \emph{priporočilniSistem.py}. Model si po vsaki uporabnikovi oceni le to zabeleži, ter izmed 100 naključno izbranih pesmi izpiše tisto, za katero napovemo najvišjo oceno.    
+
 
 Vsa ostala koda, ki se je uporabljala za dobivanje zgornjih rezultatov se nahaja v python notebooku \emph{mining.ipynb} in \emph{ganers.ipynb}
