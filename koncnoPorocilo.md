@@ -56,7 +56,7 @@ Podatki:
 ## 3. Glavne ugotovitve in rezultati
 1. hipoteza
 
-Še ni poterjena saj še vedno delava na modelu. Imava že nek lahek priporočilni sistem, ampak še ni čisto izpopolnjen.
+Priporočilni sistem uporablja knjižnico Brain js, s katero ustvarimo nevronsko mrežo. Kot vhod modelu podamo že znane podatke o pesmih, kot rezultat pa uporabnikovo oceno te pesmi(če mu je bila všeč ali ne). Uporabniku najprej predlagamo 5 pesmi, potem pa zgradimo model, s katerim predlagamo pesem. Pesem predlagamo tako, d z modelom za vse pesmi napovemo rezultat in izberemo najboljšo. Modelu po vsaki pesmi ki jo uporabnik oceni, dodamo podatke o ti pesmi in njeno oceno ter s temi posodobljenimi podatki napovemo novo. Priporočilni sistem bi lahko naprimer uporabili za sprotno generiranje playliste, na podlagi pesmi ki jih je uporabnik že ocenil.
 
 2. hipoteza
 
@@ -88,8 +88,6 @@ Tekom raziskovanja sva se odločila, da bova probala pregledati tudi vzpone in p
 * V zasdnjih letih pa prevzema glavno blogo hip hop in izpodriva pop
 
 <img src="images/ganers.png"  width="100%"/> 
-
-6. Izdelava priporocilnega sistema
 
 ## 4. Izvedene alaize
   
