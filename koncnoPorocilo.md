@@ -17,7 +17,7 @@ Pregledala bova tudi kako hitro se povečuje število izdanih pesmi glede na vsa
 
 
 ## 2. Opis podatkov
-Za uporabo sva se odločila, da bova uporabila dataset iz spletne strani [Mendeley Data](https://data.mendeley.com/datasets/3t9vbwxgr5/3). V datasetu imamo shranjenih 28373 glasbe in vsaka od njih ima po 30 parametrov, kateri so spodaj našteti in imajo kratek opis. Ta dataset je biu ustvarjen z starejšimi odordji, ki v današnjih dneh nimajo več veliko podpore in niso popularni zato točnih opisov podatkov žal nisva mogla dobiti, npr. "age". Narejen je bil s pomočjo Echo Nest API-ja in pa spotipy, ki je paket za python, kateri se uporablja za pridobivanje glasenih podatkov preko [Spotify-a](https://spotipy.readthedocs.io/).
+Za uporabo sva se odločila, da bova uporabila dataset iz spletne strani [Mendeley Data](https://data.mendeley.com/datasets/3t9vbwxgr5/3). V datasetu imamo shranjenih 28373 glasbe in vsaka od njih ima po 30 parametrov, kateri so spodaj našteti in imajo kratek opis. Ta dataset je biu ustvarjen z starejšimi odordji, ki v današnjih dneh nimajo več veliko podpore in niso popularni zato točnih opisov podatkov žal nisva mogla dobiti, npr. "age". Narejen je bil s pomočjo Echo Nest API-ja in pa spotipy, ki je paket za python, kateri se uporablja za pridobivanje glasenih podatkov preko [Spotify-a](https://spotipy.readthedocs.io/). Poskušala sva še dobiti dodatne podatke o rezultatih ocenjevanj pesmi, ampak na žalost nisva nič zadostnega našla. Spotify-ev API ne ponuja teh možnosti. Poskusila sva tudi nekaj drugih API-jev in datasete, ampak  nisva imela sreče, da bi dobila uporabne podatke. 
 
 Podatki: 
  * id - identifikacijska številka skladbe
@@ -78,19 +78,21 @@ Pred letom 2000 je bilo v povprečju na leto izdano 359.2 pesmi po vključno let
 
 5. dodatna analiza zvrsti
 
-Kot lahko vidimo iz zgornjega grafa imamo kar nekaj zanimijh dogodkov. Spodaj bom naštel nekaj od teh.
+Tekom raziskovanja sva se odločila, da bova probala pregledati tudi vzpone in padce žanrov skozi čas. Kot lahko vidimo iz zgornjega grafa imamo kar nekaj zanimijh dogodkov. Spodaj bomva naštela nekaj od teh.
 * Prvi večji uspon pop-a leta 1968 in hkratti padec prej najbolj popularne country glasbe
 * reggae keta 1976 velik uspon in hkrati tudi padec drugih zvrst kot je country, blues, itd.
 * 1990 vzpon rock-a in hud padaec pop-a
+* Vzpon pop-a je tudi najverjetneje povzročil padec drugih zvrsti v letu 1982
 * Kot lahko vidimo se je izdaja country glasbe po letu 2000 krepko upadla 
 * Padec vseh zvrsti leta 1995 in 2010
 * V zasdnjih letih pa prevzema glavno blogo hip hop in izpodriva pop
 
-<img src="images/ganers.png"  width="100%"/>
+<img src="images/ganers.png"  width="100%"/> 
 
+6. Izdelava priporocilnega sistema
 
 ## 4. Izvedene alaize
   
 Pri modelu za predlaganje pesmi uporabljava kodo, ki se nahaja v dokumentu \emph{priporočilniSistem.py}. Model si po vsaki uporabnikovi oceni le to zabeleži, ter izmed 100 naključno izbranih pesmi izpiše tisto, za katero napovemo najvišjo oceno.    
 
-Vsa ostala koda, ki se je uporabljala za dobivanje zgornjih rezultatov se nahaja v python notebooku \emph{mining.ipynb}
+Vsa ostala koda, ki se je uporabljala za dobivanje zgornjih rezultatov se nahaja v python notebooku \emph{mining.ipynb} in \emph{ganers.ipynb}
