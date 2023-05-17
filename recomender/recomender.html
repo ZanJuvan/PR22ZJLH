@@ -9,7 +9,6 @@
 <body>
 <div id="demo"></div>
 <script src="data.js"></script>
-<script src="csv.js"></script>
 <script>
 
 
@@ -18,23 +17,25 @@
 
 <script>
 
-	let tekstu="Vnesi uporabniško ime:";
-	let userName = prompt(tekstu);
 
-let storedfilmiOcene = localStorage.getItem('myfilmiOcene'+userName);
-let storedlearn = localStorage.getItem('mylearn'+userName);
-if (storedfilmiOcene !== null && storedlearn !== null) {
+
+let storedpesmiOcene = localStorage.getItem('mypesmiOcene');
+let storedlearn = localStorage.getItem('mylearn');
+let storedVseOcene = localStorage.getItem('myVseOcene');
+let storedPozOcene = localStorage.getItem('myPozOcene');
+if (storedpesmiOcene !== null && storedlearn !== null && storedPozOcene!==null && storedVseOcene !== null) {
 	if (confirm('Uporabnik najden. Pritisni OK za uporabo shranjenega priporocilnega sistema')) {
 } else {
 	localStorage.clear();
 }
 }
-storedfilmiOcene = localStorage.getItem('myfilmiOcene'+userName);
-storedlearn = localStorage.getItem('mylearn'+userName);
+storedpesmiOcene = JSON.parse(localStorage.getItem('mypesmiOcene'));
+storedlearn = JSON.parse(localStorage.getItem('mylearn'));
 
-if (storedfilmiOcene !== null && storedlearn !== null) {
+if (storedpesmiOcene !== null && storedlearn !== null) {
   console.log("je")
-  
+  let vseOcene=storedVseOcene;
+  let pozOcene=storedPozOcene;
   const config = {
   //hiddenLayers: [4,4], // array of ints for the sizes of the hidden layers in the network
   //activation: 'tanh', // supported activation types: ['sigmoid', 'relu', 'leaky-relu', 'tanh'],
@@ -44,9 +45,9 @@ if (storedfilmiOcene !== null && storedlearn !== null) {
 };
 
 
-let filmiOcene=JSON.parse(localStorage.getItem('myfilmiOcene'+userName));
+let pesmiOcene=JSON.parse(localStorage.getItem('mypesmiOcene'));
 
-let learn=JSON.parse(localStorage.getItem('mylearn'+userName));
+let learn=JSON.parse(localStorage.getItem('mylearn'));
 
 
 console.log(learn);
@@ -60,8 +61,8 @@ network.train(learn);
 let ocene=[];
 let result;
 let j=0;
-while(j<filmiOcene.length){
-	result = (network.run(filmiOcene[j][1])[0]);
+while(j<pesmiOcene.length){
+	result = (network.run(pesmiOcene[j][1])[0]);
 	ocene.push(result);
 	console.log(result);
 	
@@ -85,34 +86,42 @@ for (let i = 0; i < sortedArr.length; i++) {
 
 console.log(positions);
 
-console.log(filmiOcene.length);
+console.log(pesmiOcene.length);
 
 let l=0;
 while (l<1){
 	let num=[positions[l]]
-	console.log(filmiOcene);
-	let film=filmiOcene[num];
-	filmiOcene.splice(num,1);
-	let tekst="Priporocena pesem: "+(film[0])+". Oceni jo(od 1 do 5):";
-	let userInput = prompt(tekst);
+	console.log(pesmiOcene);
+	let pesm=pesmiOcene[num];
+	pesmiOcene.splice(num,1);
+	let userInput
+	if (confirm("Priporocena pesem: "+(pesm[0])+"klikni OK ce ti je vsec in cancel ce ti ni. Trenutna natancnost:"+(pozOcene/vseOcene) )) {
+	userInput = 5;
+	pozOcene++;
+	vseOcene++;
+	} else {
+	userInput = 1;
+	vseOcene++;
+	}
+	
 	userInput=(userInput-0.5) /4.5
-	learn.push( {input: film[1] ,output:[userInput] });
+	learn.push( {input: pesm[1] ,output:[userInput] });
 	
 	l++;
 }
 
 
-localStorage.setItem(('myfilmiOcene'+userName), JSON.stringify(filmiOcene));
-localStorage.setItem(('mylearn'+userName), JSON.stringify(learn));
+localStorage.setItem(('mypesmiOcene'), JSON.stringify(pesmiOcene));
+localStorage.setItem(('mylearn'), JSON.stringify(learn));
+localStorage.setItem(('myVseOcene'), JSON.stringify(vseOcene));
+localStorage.setItem(('myPozOcene'), JSON.stringify(pozOcene));
 
 }
 } else {
   console.log("ni");
-  
-  if (confirm('Uporabnik na tej napravi ni najden. Pritisni OK za generiranje novega priporocilnega sistema')) {
-} else {
-	
-}
+  let pozOcene=0;
+  let vseOcene=0;
+
 const config = {
   //hiddenLayers: [4,4], // array of ints for the sizes of the hidden layers in the network
   //activation: 'tanh', // supported activation types: ['sigmoid', 'relu', 'leaky-relu', 'tanh'],
@@ -122,17 +131,24 @@ const config = {
 };
 
 
-let filmiOcene=pesmi;
+let pesmiOcene=pesmi;
 let learn=[];
 i=0
 while (i<5){
 	let num=i;
-	let film=filmiOcene[num]
-	filmiOcene.splice(num,1)
-	let tekst="Oceni pesem "+(film[0])+"(od 1 do 5):";
-	let userInput = prompt(tekst);
+	let pesm=pesmiOcene[num]
+	pesmiOcene.splice(num,1)
+	let userInput
+	if (confirm("Priporocena pesem: "+(pesm[0])+"klikni OK ce ti je vsec in cancel ce ti ni. Trenutna natancnost:"+(pozOcene/vseOcene) )) {
+	userInput = 5;
+	pozOcene++;
+	vseOcene++;
+	} else {
+	userInput = 1;
+	vseOcene++;
+	}
 	userInput=(userInput-0.5) /4.5
-	learn.push( {input: film[1] ,output:[userInput] });
+	learn.push( {input: pesm[1] ,output:[userInput] });
 	i++;
 }
 console.log(learn);
@@ -146,8 +162,8 @@ network.train(learn);
 let ocene=[];
 let result;
 let j=0;
-while(j<filmiOcene.length){
-	result = (network.run(filmiOcene[j][1])[0]);
+while(j<pesmiOcene.length){
+	result = (network.run(pesmiOcene[j][1])[0]);
 	ocene.push(result);
 	console.log(result);
 	
@@ -171,26 +187,34 @@ for (let i = 0; i < sortedArr.length; i++) {
 
 console.log(positions);
 
-console.log(filmiOcene.length);
+console.log(pesmiOcene.length);
 
 let l=0;
 while (l<1){
 	let num=[positions[l]]
-	console.log(filmiOcene);
-	let film=filmiOcene[num];
-	filmiOcene.splice(num,1);
-	let tekst="Priporocena pesem: "+(film[0])+". Oceni jo(od 1 do 5):";
-	let userInput = prompt(tekst);
+	console.log(pesmiOcene);
+	let pesm=pesmiOcene[num];
+	pesmiOcene.splice(num,1);
+let userInput
+	if (confirm("Priporocena pesem: "+(pesm[0])+". Klikni OK ce ti je vsec in cancel ce ti ni. Trenutna natancnost:"+(pozOcene/vseOcene) )) {
+	userInput = 5;
+	pozOcene++;
+	vseOcene++;
+	} else {
+	userInput = 1;
+	vseOcene++;
+	}
 	userInput=(userInput-0.5) /4.5
-	learn.push( {input: film[1] ,output:[userInput] });
+	learn.push( {input: pesm[1] ,output:[userInput] });
 	
 	l++;
 }
 
 
-localStorage.setItem(('myfilmiOcene'+userName), JSON.stringify(filmiOcene));
-localStorage.setItem(('mylearn'+userName), JSON.stringify(learn));
-
+localStorage.setItem(('mypesmiOcene'), JSON.stringify(pesmiOcene));
+localStorage.setItem(('mylearn'), JSON.stringify(learn));
+localStorage.setItem(('myVseOcene'), JSON.stringify(vseOcene));
+localStorage.setItem(('myPozOcene'), JSON.stringify(pozOcene));
 }
 }
 
