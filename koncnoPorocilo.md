@@ -56,7 +56,7 @@ Podatki:
 ## 3. Glavne ugotovitve in rezultati
 1. hipoteza
 
-Priporočilni sistem uporablja knjižnico Brain js, s katero ustvarimo nevronsko mrežo. Kot vhod modelu podamo že znane podatke o pesmih, kot rezultat pa uporabnikovo oceno te pesmi(če mu je bila všeč ali ne). Uporabniku najprej predlagamo 5 pesmi, potem pa zgradimo model, s katerim predlagamo pesem. Pesem predlagamo tako, d z modelom za vse pesmi napovemo rezultat in izberemo najboljšo. Modelu po vsaki pesmi ki jo uporabnik oceni, dodamo podatke o ti pesmi in njeno oceno ter s temi posodobljenimi podatki napovemo novo. Priporočilni sistem bi lahko naprimer uporabili za sprotno generiranje playliste, na podlagi pesmi ki jih je uporabnik že ocenil.
+Priporočilni sistem uporablja knjižnico Brain js, s katero ustvarimo nevronsko mrežo. Nahaja se v mapi recomender. Kot vhod modelu podamo že znane podatke o pesmih, kot rezultat pa uporabnikovo oceno te pesmi(če mu je bila všeč ali ne). Uporabniku najprej predlagamo 5 pesmi, potem pa zgradimo model, s katerim predlagamo pesem. Pesem predlagamo tako, d z modelom za vse pesmi napovemo rezultat in izberemo najboljšo. Modelu po vsaki pesmi ki jo uporabnik oceni, dodamo podatke o ti pesmi in njeno oceno ter s temi posodobljenimi podatki napovemo novo. Priporočilni sistem bi lahko naprimer uporabili za sprotno generiranje playliste, na podlagi pesmi ki jih je uporabnik že ocenil.
 
 2. hipoteza
 
